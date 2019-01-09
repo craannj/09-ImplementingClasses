@@ -53,7 +53,6 @@ class Point(object):
         self.start_y = y
         self.traveled = 0
 
-
     def __repr__(self):
         return 'Point({}, {})'.format(self.x, self.y)
 
@@ -64,13 +63,16 @@ class Point(object):
         self.x = x
         self.y = y
         self.move = self.move + 1
-        self.traveled =
+        distance_x = (self.start_x - self.x) ** 2
+        distance_y = (self.start_y - self.y) ** 2
+        distance = (distance_x + distance_y) ** 0.5
+        self.traveled = self.traveled + distance
 
     def move_by(self, dx, dy):
         self.x = self.x + dx
         self.y = self.y + dy
         self.move = self.move + 1
-        self.traveled =
+        self.traveled = self.traveled + (dx + dy)
 
     def get_number_of_moves_made(self):
         return self.move
@@ -614,7 +616,7 @@ def run_test_get_number_of_moves_made():
     # -------------------------------------------------------------------------
     # DONE: 8.  Follow the same instructions as in _TODO_ 3 above,
     #    but for the  get_number_of_moves_made  method specified above.
-    # TODO (continued):  HINT: What must a Point REMEMBER for this method?
+    # DONE (continued):  HINT: What must a Point REMEMBER for this method?
     # -------------------------------------------------------------------------
     print()
     print('-----------------------------------------------------------')
